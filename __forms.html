@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!--
+  Netlify Forms detection file. Netlify scans static HTML at deploy time to register forms.
+  The real form is rendered by React (components/sections/ContactForm.tsx) and posts here.
+  Field names must match the React form. Do not delete.
+-->
+<html>
+  <body>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+      <input type="checkbox" name="consent" />
+    </form>
+  </body>
+</html>
