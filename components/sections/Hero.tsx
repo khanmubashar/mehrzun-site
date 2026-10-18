@@ -11,13 +11,6 @@ import { Eyebrow } from "@/components/ui/Section";
 import { brand, hero } from "@/lib/content";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-const leaves = Array.from({ length: 9 }, (_, i) => ({
-  left: `${8 + ((i * 37) % 86)}%`,
-  size: 10 + ((i * 7) % 14),
-  duration: 14 + ((i * 5) % 10),
-  delay: (i * 1.7) % 9,
-}));
-
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -41,18 +34,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-inverse-deep/95 via-inverse-deep/80 to-inverse/55" />
-
-      {/* Drifting gold leaves */}
-      {leaves.map((l, i) => (
-        <motion.span
-          key={i}
-          aria-hidden
-          className="pointer-events-none absolute -bottom-10 -z-10 block rounded-[0_70%_0_70%] bg-accent/40"
-          style={{ left: l.left, width: l.size, height: l.size * 1.6 }}
-          animate={{ y: ["0vh", "-115vh"], x: [0, 30, -20, 10], rotate: [0, 180, 320], opacity: [0, 0.9, 0.9, 0] }}
-          transition={{ duration: l.duration, delay: l.delay, repeat: Infinity, ease: "linear" }}
-        />
-      ))}
 
       <motion.div
         style={{ y: contentY, opacity: fade }}
@@ -131,6 +112,8 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </motion.div>
+
+      <p className="absolute right-4 bottom-4 text-xs text-inverse-foreground/60 sm:right-6">{images.hero.caption}</p>
 
       <motion.a
         href="#about"

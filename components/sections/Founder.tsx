@@ -26,7 +26,7 @@ export default function Founder() {
           <Image src={logo} alt="" width={56} height={56} className="rounded-full" />
           <p className="text-left">
             <span className="block h-px w-10 bg-accent" />
-            <span className="mt-2 block text-sm font-semibold tracking-[0.18em] text-inverse-accent uppercase">— {founder.signature}</span>
+            <span className="mt-2 block text-sm font-semibold tracking-[0.18em] text-inverse-accent uppercase">{founder.signature}</span>
           </p>
         </FadeIn>
       </Container>

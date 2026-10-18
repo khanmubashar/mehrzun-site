@@ -32,7 +32,7 @@ export default function About() {
           <Stagger className="mt-8 flex flex-wrap gap-3">
             {about.values.map((v) => (
               <StaggerItem key={v}>
-                <span className="inline-block rounded-full border border-accent/50 bg-surface px-5 py-2 font-serif text-lg">{v}</span>
+                <span className="inline-block rounded-md border border-accent/50 bg-surface px-4 py-1.5 font-serif text-lg">{v}</span>
               </StaggerItem>
             ))}
           </Stagger>

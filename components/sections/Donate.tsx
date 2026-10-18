@@ -22,7 +22,7 @@ export default function Donate() {
           </FadeIn>
         ))}
         <FadeIn delay={0.35} className="mt-10">
-          <ButtonLink href="#contact" variant="accent" className="animate-[pulse-ring_2.4s_ease-out_infinite]">
+          <ButtonLink href="#contact" variant="accent">
             {donate.cta}
           </ButtonLink>
         </FadeIn>

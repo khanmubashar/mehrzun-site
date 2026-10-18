@@ -13,21 +13,21 @@ import g6 from "@/assets/img/g6.jpg";
 import g7 from "@/assets/img/g7.jpg";
 import g8 from "@/assets/img/g8.jpg";
 
-type Img = { src: StaticImageData; alt: string };
+type Img = { src: StaticImageData; alt: string; caption: string };
 export const images: { hero: Img; about: Img; work: Img; donate: Img; gallery: Img[] } = {
-  hero: { src: hero, alt: "A grain seller at his stall in a busy Karachi market" },
-  about: { src: about, alt: "An elderly craftsman carving wood in a Peshawar market" },
-  work: { src: work, alt: "A farmer tending his crop field in Swat Valley, Khyber Pakhtunkhwa" },
-  donate: { src: donate, alt: "Men sorting fresh peaches in an orchard in Gwalerai, Khyber Pakhtunkhwa" },
+  hero: { src: hero, alt: "A grain seller at his stall in a busy Karachi market", caption: "Grain market, Karachi" },
+  about: { src: about, alt: "An elderly craftsman carving wood in a Peshawar market", caption: "Woodcarver, Peshawar" },
+  work: { src: work, alt: "A farmer tending his crop field in Swat Valley, Khyber Pakhtunkhwa", caption: "Farmland, Swat Valley" },
+  donate: { src: donate, alt: "Men sorting fresh peaches in an orchard in Gwalerai, Khyber Pakhtunkhwa", caption: "Peach harvest, Gwalerai" },
   gallery: [
-    { src: g1, alt: "A shopkeeper in Mingora's historic bazaar" },
-    { src: g2, alt: "A fruit vendor with his scale at Mandaguchha market" },
-    { src: g3, alt: "Bakers making traditional naan in Mingora" },
-    { src: g4, alt: "A potter with his handmade pottery in Taxila" },
-    { src: g5, alt: "A street vendor frying kebabs in Mingora bazaar" },
-    { src: g6, alt: "A young reed vendor in a Faisalabad market" },
-    { src: g7, alt: "A woman in traditional Hunza headwear at a craft market" },
-    { src: g8, alt: "A street vendor selling halwa in Mingora" },
+    { src: g1, alt: "A shopkeeper in Mingora's historic bazaar", caption: "Shopkeeper, Mingora" },
+    { src: g2, alt: "A fruit vendor with his scale at Mandaguchha market", caption: "Fruit seller, Mandaguchha" },
+    { src: g3, alt: "Bakers making traditional naan in Mingora", caption: "Naan bakery, Mingora" },
+    { src: g4, alt: "A potter with his handmade pottery in Taxila", caption: "Pottery stall, Taxila" },
+    { src: g5, alt: "A street vendor frying kebabs in Mingora bazaar", caption: "Kebab stall, Mingora" },
+    { src: g6, alt: "A young reed vendor in a Faisalabad market", caption: "Reed seller, Faisalabad" },
+    { src: g7, alt: "A woman in traditional Hunza headwear at a craft market", caption: "Hunza crafts stall" },
+    { src: g8, alt: "A street vendor selling halwa in Mingora", caption: "Halwa seller, Mingora" },
   ],
 };
 

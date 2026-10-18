@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 /** Shared button styles. Use on <a> or <button> via buttonVariants(), or the <ButtonLink> helper. */
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-[background,color,box-shadow,border-color] duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-60",
+  "inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-[background,color,box-shadow,border-color] duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-60",
   {
     variants: {
       variant: {

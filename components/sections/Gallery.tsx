@@ -16,8 +16,11 @@ export default function Gallery() {
         transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
       >
         {row.map((img, i) => (
-          <li key={i} aria-hidden={i >= images.gallery.length} className="relative h-56 w-80 shrink-0 overflow-hidden rounded-2xl sm:h-64 sm:w-96">
-            <Image src={img.src} alt={i < images.gallery.length ? img.alt : ""} fill sizes="384px" placeholder="blur" className="object-cover transition-transform duration-700 hover:scale-110" />
+          <li key={i} aria-hidden={i >= images.gallery.length} className="w-80 shrink-0 sm:w-96">
+            <div className="relative h-56 overflow-hidden rounded-2xl sm:h-64">
+              <Image src={img.src} alt={i < images.gallery.length ? img.alt : ""} fill sizes="384px" placeholder="blur" className="object-cover transition-transform duration-700 hover:scale-110" />
+            </div>
+            <p className="mt-2 text-sm text-muted-foreground">{img.caption}</p>
           </li>
         ))}
       </motion.ul>
