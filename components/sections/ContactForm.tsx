@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "motion/react";
 import { CheckCircle2, Send } from "lucide-react";
 import { FaInstagram as Instagram } from "react-icons/fa6";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { buttonVariants } from "@/components/ui/Button";
@@ -18,17 +19,52 @@ const schema = z.object({
 });
 type FormValues = z.infer<typeof schema>;
 
+/** Netlify Forms form name; must match public/__forms.html. */
+const FORM_NAME = "contact";
+
 /**
- * Validation only: the site is static and the official email is not confirmed yet.
- * When an inbox or a form service (e.g. Formspree/Web3Forms) is ready, send `data` there in onSubmit.
+ * Submits to Netlify Forms. Netlify registers the form from public/__forms.html at deploy time,
+ * stores each submission and emails it to the addresses set under Forms → Form notifications.
  */
+async function submitToNetlify(data: FormValues, botField: string) {
+  const body = new URLSearchParams({
+    "form-name": FORM_NAME,
+    "bot-field": botField,
+    name: data.name,
+    email: data.email,
+    subject: data.subject,
+    message: data.message,
+    consent: data.consent ? "yes" : "no",
+  });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/__forms.html`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: body.toString(),
+  });
+  if (!res.ok) throw new Error(`Form submission failed (${res.status})`);
+}
+
 export default function ContactForm() {
+  const [sent, setSent] = useState(false);
+  const [sendError, setSendError] = useState(false);
+  const [botField, setBotField] = useState(""); // honeypot: real visitors never fill it
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
+
+  const onSubmit = async (data: FormValues) => {
+    setSendError(false);
+    try {
+      await submitToNetlify(data, botField);
+      setSent(true);
+      reset();
+    } catch {
+      setSendError(true);
+    }
+  };
 
   const field =
     "w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-accent focus:ring-4 focus:ring-accent/20";
@@ -37,7 +73,7 @@ export default function ContactForm() {
 
   return (
     <AnimatePresence mode="wait">
-      {isSubmitSuccessful ? (
+      {sent ? (
         <motion.div
           key="done"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -51,12 +87,12 @@ export default function ContactForm() {
           </motion.div>
           <h3 className="mt-4 font-serif text-3xl font-semibold ">Thank you for reaching out</h3>
           <p className="mt-3 max-w-md text-muted-foreground">
-            We appreciate your message. For a quicker reply, you can also reach us on Instagram.
+            We have received your message and will get back to you soon. You can also reach us on Instagram.
           </p>
           <a href={siteConfig.social.instagram.url} target="_blank" rel="noopener noreferrer" className={buttonVariants({ className: "mt-6" })}>
             <Instagram size={18} /> {siteConfig.social.instagram.handle}
           </a>
-          <button onClick={() => reset()} className="mt-4 text-sm font-medium text-accent-text underline-offset-4 hover:underline">
+          <button onClick={() => setSent(false)} className="mt-4 text-sm font-medium text-accent-text underline-offset-4 hover:underline">
             Back to the form
           </button>
         </motion.div>
@@ -64,10 +100,16 @@ export default function ContactForm() {
         <motion.form
           key="form"
           noValidate
-          onSubmit={handleSubmit(() => {})}
+          name={FORM_NAME}
+          onSubmit={handleSubmit(onSubmit)}
           exit={{ opacity: 0, y: -10 }}
           className="space-y-5 rounded-3xl bg-surface p-6 shadow-xl shadow-black/5 sm:p-10"
         >
+          <p hidden aria-hidden="true">
+            <label>
+              Leave this empty: <input name="bot-field" tabIndex={-1} autoComplete="off" value={botField} onChange={(e) => setBotField(e.target.value)} />
+            </label>
+          </p>
           <div className="grid gap-5 sm:grid-cols-2">
             <label className="block">
               <span className="mb-1.5 block text-sm font-semibold">Name</span>
@@ -98,8 +140,17 @@ export default function ContactForm() {
             </span>
           </label>
           <Err msg={errors.consent?.message} />
-          <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="submit" className={buttonVariants({ className: "w-full sm:w-auto" })}>
-            <Send size={18} /> Send Message
+          {sendError && (
+            <p role="alert" className="text-sm text-danger">
+              Sorry, your message could not be sent. Please try again, or message us on Instagram at{" "}
+              <a href={siteConfig.social.instagram.url} target="_blank" rel="noopener noreferrer" className="underline">
+                {siteConfig.social.instagram.handle}
+              </a>
+              .
+            </p>
+          )}
+          <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} type="submit" disabled={isSubmitting} className={buttonVariants({ className: "w-full sm:w-auto" })}>
+            <Send size={18} /> {isSubmitting ? "Sending…" : "Send Message"}
           </motion.button>
         </motion.form>
       )}

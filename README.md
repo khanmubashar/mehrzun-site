@@ -41,8 +41,10 @@ Components only use semantic colour names such as `bg-background`, `text-primary
 **Replace stock photos.** Drop new files into `assets/img/` with the same names, or update the imports in `lib/images.ts`.
 Update alt text and credits there too.
 
-**Connect the contact form.** The form validates but does not send yet, because the official email is not confirmed.
-In `components/sections/ContactForm.tsx`, post the data to a form service such as Formspree or Web3Forms inside `onSubmit`.
+**Contact form emails (Netlify Forms).** The form posts to Netlify Forms; `public/__forms.html` lets Netlify detect it.
+In the Netlify dashboard: Forms, Enable form detection, redeploy; then Forms, Form notifications, Add notification,
+Email notification, form `contact`, and the address that should receive messages. Submissions are also listed under Forms.
+If you add or rename a field, change it in both `ContactForm.tsx` and `public/__forms.html`.
 
 ## Pending content from the brief
 
