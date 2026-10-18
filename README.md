@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mehrzun website
 
-## Getting Started
+Single-page static website for **Mehrzun**, an interest-free microfinance initiative.
+Built with Next.js (App Router, static export), Tailwind CSS v4, Motion, next-themes, Lucide, react-hook-form and Zod.
 
-First, run the development server:
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # static site is written to ./out
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Path | What it holds |
+| --- | --- |
+| `lib/content.ts` | All page copy, one export per section. Edit text here. |
+| `config/site.ts` | Site name, navigation, social links, theme settings. |
+| `lib/images.ts` | Image imports, alt text and photo credits (generated). |
+| `assets/img/` | Logo and photos (imported, so they are optimised and base-path safe). |
+| `app/globals.css` | Theme tokens for light and dark, Tailwind setup. |
+| `components/sections/` | One file per page section (Hero, About, Founder, Work, Gallery, Supporters, Donate, Contact). |
+| `components/layout/` | Header, Footer, ThemeProvider, ThemeToggle. |
+| `components/ui/` | Reusable building blocks: Button variants, Section/Container/Eyebrow/Heading, Motion helpers. |
+| `scripts/images/` | Playwright scripts used to search and download the Pexels photos. |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Common changes
 
-## Learn More
+**Edit text.** Change `lib/content.ts`. Components read from it.
 
-To learn more about Next.js, take a look at the following resources:
+**Add a section.** Create `components/sections/NewSection.tsx` using `Section`, `Container`, `Eyebrow` and `Heading`.
+Add its copy to `lib/content.ts`, add it to the `sections` array in `app/page.tsx`, and add its `#id` to `siteConfig.nav`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Turn on dark mode.** In `config/site.ts` set `theme.enableSwitching` to `true`. A sun/moon toggle appears in the header.
+Set `defaultTheme` to `"system"` to follow the visitor's OS. Colours for both themes live in `app/globals.css`.
+Components only use semantic colour names such as `bg-background`, `text-primary` or `bg-inverse`, never raw hex.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Change colours.** Edit the CSS variables under `:root` (light) and `[data-theme="dark"]` in `app/globals.css`.
 
-## Deploy on Vercel
+**Replace stock photos.** Drop new files into `assets/img/` with the same names, or update the imports in `lib/images.ts`.
+Update alt text and credits there too.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Connect the contact form.** The form validates but does not send yet, because the official email is not confirmed.
+In `components/sections/ContactForm.tsx`, post the data to a form service such as Formspree or Web3Forms inside `onSubmit`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Pending content from the brief
+
+These items are intentionally not published until confirmed:
+founder photo and story, program eligibility and application steps (no "Apply" button), real program photos,
+donor list, payment details, official email, phone/WhatsApp and address, community service section,
+and whether "Foundation" or "Society" may be used in the name.
+
+## Deploy
+
+Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the static export and publishes it to GitHub Pages.
+The base path is set automatically. For a custom domain, set it in the repo's Pages settings and add `public/CNAME`.
+The `./out` folder can also be uploaded as-is to any static host (Netlify, Cloudflare Pages, Vercel, S3).

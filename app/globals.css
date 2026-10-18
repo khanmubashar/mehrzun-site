@@ -1,42 +1,108 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+/* `dark:` utilities follow the data-theme attribute set by next-themes, not the OS setting. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * THEME TOKENS
+ * Components only use the semantic names below (bg-background, text-primary, bg-inverse…),
+ * never raw hex values, so the whole site can be re-themed here.
+ * Light is active by default; dark is fully defined and is enabled via config/site.ts.
+ */
+:root,
+[data-theme="light"] {
+  --background: #f7f1e3;          /* warm cream page */
+  --foreground: #163223;          /* deep forest text */
+  --muted-foreground: #3f5a49;
+  --surface: #fdfaf3;             /* cards, form */
+  --surface-muted: #ede3cc;       /* banded sections */
+  --border: rgb(29 59 42 / 0.12);
+
+  --primary: #1d3b2a;             /* forest green */
+  --primary-hover: #24503a;
+  --primary-foreground: #fdfaf3;
+
+  --accent: #c9a96a;              /* muted gold */
+  --accent-hover: #dcc28e;
+  --accent-foreground: #0f2318;
+  --accent-text: #8a6c3a;         /* gold that passes contrast on cream */
+
+  --inverse: #1d3b2a;             /* dark-band sections (founder) */
+  --inverse-deep: #0f2318;        /* hero, donate, footer */
+  --inverse-foreground: #fdfaf3;
+  --inverse-muted: #d9d2bf;
+  --inverse-accent: #dcc28e;
+
+  --danger: #b42318;
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+[data-theme="dark"] {
+  --background: #0e1912;
+  --foreground: #ede3cc;
+  --muted-foreground: #b9b19c;
+  --surface: #15241b;
+  --surface-muted: #12201a;
+  --border: rgb(237 227 204 / 0.12);
+
+  --primary: #2f6549;
+  --primary-hover: #3a7a59;
+  --primary-foreground: #fdfaf3;
+
+  --accent: #c9a96a;
+  --accent-hover: #dcc28e;
+  --accent-foreground: #0f2318;
+  --accent-text: #dcc28e;
+
+  --inverse: #132219;
+  --inverse-deep: #08100b;
+  --inverse-foreground: #f7f1e3;
+  --inverse-muted: #c8c0aa;
+  --inverse-accent: #dcc28e;
+
+  --danger: #f97066;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-text: var(--accent-text);
+  --color-inverse: var(--inverse);
+  --color-inverse-deep: var(--inverse-deep);
+  --color-inverse-foreground: var(--inverse-foreground);
+  --color-inverse-muted: var(--inverse-muted);
+  --color-inverse-accent: var(--inverse-accent);
+  --color-danger: var(--danger);
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground font-sans antialiased transition-colors duration-300;
   }
+  section[id] { scroll-margin-top: 5rem; }
+  ::selection { @apply bg-accent text-accent-foreground; }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgb(201 169 106 / 0.55); }
+  70% { box-shadow: 0 0 0 18px rgb(201 169 106 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(201 169 106 / 0); }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
