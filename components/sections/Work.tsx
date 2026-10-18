@@ -49,7 +49,6 @@ export default function Work() {
               <p className="max-w-md font-serif text-3xl leading-snug text-inverse-foreground italic sm:text-5xl">{work.quote}</p>
             </figcaption>
           </figure>
-          <p className="mt-5 text-center text-sm text-muted-foreground">{work.note}</p>
         </FadeIn>
       </Container>
     </Section>

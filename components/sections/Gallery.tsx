@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { images } from "@/lib/images";
 
-/** Infinite photo marquee. Photos are illustrative stock until program photos are approved. */
+/** Infinite photo marquee. Swap the stock photos in lib/images.ts for program photos when approved. */
 export default function Gallery() {
   const reduce = useReducedMotion();
   const row = [...images.gallery, ...images.gallery];
@@ -21,9 +21,6 @@ export default function Gallery() {
           </li>
         ))}
       </motion.ul>
-      <p className="mt-6 px-4 text-center text-xs tracking-wide text-muted-foreground">
-        Illustrative images. Photos of Mehrzun’s own work will be shared as the program grows.
-      </p>
     </section>
   );
 }

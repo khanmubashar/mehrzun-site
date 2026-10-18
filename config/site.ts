@@ -27,8 +27,8 @@ export const siteConfig = {
    *   Set it to true to show the light/dark toggle in the header.
    */
   theme: {
-    defaultTheme: "light" as "light" | "dark" | "system",
-    enableSwitching: false,
+    defaultTheme: "system" as "light" | "dark" | "system",
+    enableSwitching: true,
   },
 } as const;
 

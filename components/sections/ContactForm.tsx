@@ -51,7 +51,7 @@ export default function ContactForm() {
           </motion.div>
           <h3 className="mt-4 font-serif text-3xl font-semibold ">Thank you for reaching out</h3>
           <p className="mt-3 max-w-md text-muted-foreground">
-            Our contact inbox is still being set up. In the meantime, please send us a direct message on Instagram.
+            We appreciate your message. For a quicker reply, you can also reach us on Instagram.
           </p>
           <a href={siteConfig.social.instagram.url} target="_blank" rel="noopener noreferrer" className={buttonVariants({ className: "mt-6" })}>
             <Instagram size={18} /> {siteConfig.social.instagram.handle}

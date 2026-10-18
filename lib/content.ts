@@ -48,7 +48,6 @@ export const work = {
     { icon: "sprout", title: "Dignity and independence", text: "Encouraging sustainable livelihoods and greater financial confidence." },
   ],
   quote: brandAltTagline,
-  note: "Details about eligibility and the application process will be shared here as our program develops.",
 };
 
 export const supporters = {
@@ -65,7 +64,6 @@ export const donate = {
     "We believe support should be handled responsibly and communicated transparently. As our programs grow, we aim to share clear information about activities, funding, and outcomes.",
   ],
   cta: "Support the Mission",
-  pending: "Donation channels are being finalised. Get in touch and we will share how you can contribute.",
 };
 
 export const contact = {

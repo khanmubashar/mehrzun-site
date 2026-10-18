@@ -25,7 +25,6 @@ export default function Donate() {
           <ButtonLink href="#contact" variant="accent" className="animate-[pulse-ring_2.4s_ease-out_infinite]">
             {donate.cta}
           </ButtonLink>
-          <p className="mt-5 text-sm text-inverse-muted/80">{donate.pending}</p>
         </FadeIn>
       </Container>
     </Section>

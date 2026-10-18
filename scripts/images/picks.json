@@ -1,0 +1,14 @@
+{
+  "hero":   {"key": "000", "width": 2400, "alt": "A grain seller at his stall in a busy Karachi market"},
+  "about":  {"key": "126", "width": 1400, "alt": "An elderly craftsman carving wood in a Peshawar market"},
+  "work":   {"key": "145", "width": 2200, "alt": "A farmer planting rice in a sunlit field in Swat, Pakistan"},
+  "donate": {"key": "150", "width": 2200, "alt": "Men sorting fresh peaches in an orchard in Gwalerai, Khyber Pakhtunkhwa"},
+  "g1":     {"key": "010", "width": 1000, "alt": "A shopkeeper in Mingora's historic bazaar"},
+  "g2":     {"key": "096", "width": 1000, "alt": "A fruit vendor with his scale at Mandaguchha market"},
+  "g3":     {"key": "122", "width": 1000, "alt": "Bakers making traditional naan in Mingora"},
+  "g4":     {"key": "127", "width": 1000, "alt": "A potter with his handmade pottery in Taxila"},
+  "g5":     {"key": "055", "width": 1000, "alt": "A street vendor frying kebabs in Mingora bazaar"},
+  "g6":     {"key": "130", "width": 1000, "alt": "A young reed vendor in a Faisalabad market"},
+  "g7":     {"key": "112", "width": 1000, "alt": "A woman in traditional Hunza headwear at a craft market"},
+  "g8":     {"key": "104", "width": 1000, "alt": "A street vendor selling halwa in Mingora"}
+}

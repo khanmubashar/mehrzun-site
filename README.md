@@ -32,8 +32,8 @@ npm run build      # static site is written to ./out
 **Add a section.** Create `components/sections/NewSection.tsx` using `Section`, `Container`, `Eyebrow` and `Heading`.
 Add its copy to `lib/content.ts`, add it to the `sections` array in `app/page.tsx`, and add its `#id` to `siteConfig.nav`.
 
-**Turn on dark mode.** In `config/site.ts` set `theme.enableSwitching` to `true`. A sun/moon toggle appears in the header.
-Set `defaultTheme` to `"system"` to follow the visitor's OS. Colours for both themes live in `app/globals.css`.
+**Dark mode.** On by default and follows the visitor's system setting; the header toggle overrides it. To lock the site to one theme, set `theme.enableSwitching` to `false` and `defaultTheme` to `"light"` or `"dark"` in `config/site.ts`.
+Colours for both themes live in `app/globals.css`.
 Components only use semantic colour names such as `bg-background`, `text-primary` or `bg-inverse`, never raw hex.
 
 **Change colours.** Edit the CSS variables under `:root` (light) and `[data-theme="dark"]` in `app/globals.css`.
@@ -53,6 +53,13 @@ and whether "Foundation" or "Society" may be used in the name.
 
 ## Deploy
 
-Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the static export and publishes it to GitHub Pages.
+Live site: https://khanmubashar.github.io/mehrzun-site/
+
+```bash
+./scripts/deploy.sh   # builds and publishes ./out to the gh-pages branch
+```
+
+Pages is set to deploy from the `gh-pages` branch. Once GitHub Actions is available on the account, you can switch
+Pages to "GitHub Actions" in the repo settings; and enable the `push` trigger in `.github/workflows/deploy.yml` so every push to `main` deploys.
 The base path is set automatically. For a custom domain, set it in the repo's Pages settings and add `public/CNAME`.
 The `./out` folder can also be uploaded as-is to any static host (Netlify, Cloudflare Pages, Vercel, S3).

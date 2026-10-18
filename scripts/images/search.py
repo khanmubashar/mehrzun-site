@@ -5,8 +5,8 @@ from playwright.sync_api import sync_playwright
 
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 QUERIES = sys.argv[1:]
-out = Path("thumbs"); out.mkdir(exist_ok=True)
-meta_path = Path("meta.json")
+out = Path(__import__("os").environ.get("THUMBS", "thumbs")); out.mkdir(exist_ok=True)
+meta_path = Path(__import__("os").environ.get("META", "meta.json"))
 meta = json.loads(meta_path.read_text()) if meta_path.exists() else {}
 
 with sync_playwright() as p:

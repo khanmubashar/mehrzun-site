@@ -3,7 +3,6 @@ import { FaInstagram as Instagram } from "react-icons/fa6";
 import logo from "@/assets/img/logo.png";
 import { siteConfig } from "@/config/site";
 import { brand } from "@/lib/content";
-import { credits } from "@/lib/images";
 
 export default function Footer() {
   const { instagram } = siteConfig.social;
@@ -27,21 +26,6 @@ export default function Footer() {
         </div>
         <div className="mt-12 border-t border-inverse-foreground/10 pt-6 text-center text-xs leading-relaxed text-inverse-muted/70">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-          <p className="mt-2">
-            Illustrative photos from{" "}
-            <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer" className="underline-offset-2 hover:underline">
-              Pexels
-            </a>
-            {credits.length > 0 && " by "}
-            {credits.map((c, i) => (
-              <span key={c.url}>
-                <a href={c.url} target="_blank" rel="noopener noreferrer" className="underline-offset-2 hover:text-inverse-accent hover:underline">
-                  {c.by}
-                </a>
-                {i < credits.length - 1 ? ", " : "."}
-              </span>
-            ))}
-          </p>
         </div>
       </div>
     </footer>
