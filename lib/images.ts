@@ -17,7 +17,7 @@ type Img = { src: StaticImageData; alt: string };
 export const images: { hero: Img; about: Img; work: Img; donate: Img; gallery: Img[] } = {
   hero: { src: hero, alt: "A grain seller at his stall in a busy Karachi market" },
   about: { src: about, alt: "An elderly craftsman carving wood in a Peshawar market" },
-  work: { src: work, alt: "A farmer planting rice in a sunlit field in Swat, Pakistan" },
+  work: { src: work, alt: "A farmer tending his crop field in Swat Valley, Khyber Pakhtunkhwa" },
   donate: { src: donate, alt: "Men sorting fresh peaches in an orchard in Gwalerai, Khyber Pakhtunkhwa" },
   gallery: [
     { src: g1, alt: "A shopkeeper in Mingora's historic bazaar" },
@@ -43,7 +43,7 @@ export const credits = [
   },
   {
     "by": "Amjad ali",
-    "url": "https://www.pexels.com/photo/elderly-farmer-tending-rice-field-under-sunlight-37258499/"
+    "url": "https://www.pexels.com/photo/traditional-farming-scene-in-swat-valley-39378681/"
   },
   {
     "by": "Amjad ali",

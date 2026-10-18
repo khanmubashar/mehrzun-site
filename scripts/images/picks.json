@@ -1,7 +1,7 @@
 {
   "hero":   {"key": "000", "width": 2400, "alt": "A grain seller at his stall in a busy Karachi market"},
   "about":  {"key": "126", "width": 1400, "alt": "An elderly craftsman carving wood in a Peshawar market"},
-  "work":   {"key": "145", "width": 2200, "alt": "A farmer planting rice in a sunlit field in Swat, Pakistan"},
+  "work":   {"key": "140", "width": 2200, "alt": "A farmer tending his crop field in Swat Valley, Khyber Pakhtunkhwa"},
   "donate": {"key": "150", "width": 2200, "alt": "Men sorting fresh peaches in an orchard in Gwalerai, Khyber Pakhtunkhwa"},
   "g1":     {"key": "010", "width": 1000, "alt": "A shopkeeper in Mingora's historic bazaar"},
   "g2":     {"key": "096", "width": 1000, "alt": "A fruit vendor with his scale at Mandaguchha market"},

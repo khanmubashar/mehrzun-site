@@ -53,6 +53,17 @@ and whether "Foundation" or "Society" may be used in the name.
 
 ## Deploy
 
+### Netlify (recommended)
+
+`netlify.toml` already holds the build settings (build `npm run build`, publish `out`, Node 20).
+
+- **Auto-deploy from GitHub.** In Netlify choose Add new site, then Import an existing project, then GitHub, and pick
+  `khanmubashar/mehrzun-site`. Netlify reads `netlify.toml`, builds on its own servers and redeploys on every push to `main`.
+- **From this computer.** Run `npx netlify-cli login` once, then `npm run deploy:netlify`.
+- **Drag and drop.** Run `npm run build` and drop the `out` folder on https://app.netlify.com/drop.
+
+### GitHub Pages
+
 Live site: https://khanmubashar.github.io/mehrzun-site/
 
 ```bash

@@ -42,7 +42,7 @@ export default function Work() {
         <FadeIn className="mt-14">
           <figure className="relative overflow-hidden rounded-[2rem]">
             <div className="relative aspect-[4/3] sm:aspect-[21/8]">
-              <Image src={images.work.src} alt={images.work.alt} fill sizes="100vw" placeholder="blur" className="object-cover" />
+              <Image src={images.work.src} alt={images.work.alt} fill sizes="100vw" placeholder="blur" className="object-cover object-[50%_20%]" />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-inverse-deep/90 via-inverse-deep/55 to-inverse-deep/20 sm:bg-gradient-to-r sm:from-inverse-deep/90 sm:via-inverse-deep/50 sm:to-transparent" />
             <figcaption className="absolute inset-0 flex items-end p-6 sm:items-center sm:p-12">

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy:netlify": "npm run build && npx -y netlify-cli deploy --prod --dir=out",
+    "deploy:ghpages": "./scripts/deploy.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.2",
