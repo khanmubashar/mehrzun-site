@@ -82,6 +82,7 @@ export const donationForm = {
     phone: "Phone number",
     email: "Email (optional)",
     amount: "Donation amount",
+    amountCustom: "Or enter any amount",
     bankDetails: "Your bank details",
     bankDetailsHint: "Bank name and account title you sent the donation from",
     screenshot: "Transfer screenshot",

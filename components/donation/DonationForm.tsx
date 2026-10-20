@@ -14,7 +14,7 @@ import { submitNetlifyForm } from "@/lib/netlify-forms";
 import { cn } from "@/lib/utils";
 
 const FORM_NAME = "donation"; // must match public/__forms.html
-const { currency, bank, maxScreenshotMB } = siteConfig.donation;
+const { currency, bank, maxScreenshotMB, presetAmounts } = siteConfig.donation;
 const MAX_BYTES = maxScreenshotMB * 1024 * 1024;
 
 const schema = z.object({
@@ -124,8 +124,13 @@ export default function DonationForm({ onDone }: { onDone: () => void }) {
     register,
     control,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({ resolver: zodResolver(schema), defaultValues: { email: "" } });
+
+  const amount = watch("amount");
+  const pickAmount = (n: number) => setValue("amount", String(n), { shouldValidate: true, shouldDirty: true });
 
   const onSubmit = async (data: FormValues) => {
     setSendError(false);
@@ -189,20 +194,46 @@ export default function DonationForm({ onDone }: { onDone: () => void }) {
               <input {...register("phone")} type="tel" autoComplete="tel" inputMode="tel" placeholder="03XX XXXXXXX" className={field} />
               <Err msg={errors.phone?.message} />
             </label>
-            <label className="block">
+            <label className="block sm:col-span-2">
               <span className="mb-1.5 block text-sm font-semibold">{copy.labels.email}</span>
               <input {...register("email")} type="email" autoComplete="email" className={field} />
               <Err msg={errors.email?.message} />
             </label>
-            <label className="block">
-              <span className="mb-1.5 block text-sm font-semibold">{copy.labels.amount}</span>
+          </div>
+
+          <fieldset>
+            <legend className="mb-2 block text-sm font-semibold">{copy.labels.amount}</legend>
+            <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
+              {presetAmounts.map((n) => {
+                const active = amount === String(n);
+                return (
+                  <motion.button
+                    key={n}
+                    type="button"
+                    whileTap={{ scale: 0.96 }}
+                    onClick={() => pickAmount(n)}
+                    aria-pressed={active}
+                    className={cn(
+                      "rounded-lg border px-3 py-2.5 text-sm font-semibold transition-colors",
+                      active
+                        ? "border-primary bg-primary text-primary-foreground dark:border-accent dark:bg-accent dark:text-accent-foreground"
+                        : "border-border bg-background hover:border-accent"
+                    )}
+                  >
+                    {n.toLocaleString("en-PK")}
+                  </motion.button>
+                );
+              })}
+            </div>
+            <label className="mt-3 block">
+              <span className="sr-only">{copy.labels.amountCustom}</span>
               <div className="relative">
                 <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-sm font-semibold text-muted-foreground">{currency}</span>
-                <input {...register("amount")} inputMode="decimal" placeholder="Any amount" className={cn(field, "pl-14")} />
+                <input {...register("amount")} inputMode="decimal" placeholder={copy.labels.amountCustom} className={cn(field, "pl-14")} />
               </div>
-              <Err msg={errors.amount?.message} />
             </label>
-          </div>
+            <Err msg={errors.amount?.message} />
+          </fieldset>
 
           <label className="block">
             <span className="mb-1.5 block text-sm font-semibold">{copy.labels.bankDetails}</span>

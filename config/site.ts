@@ -22,6 +22,8 @@ export const siteConfig = {
    */
   donation: {
     currency: "PKR",
+    /** Quick-pick amounts shown as buttons above the amount field; donors can still type any amount. */
+    presetAmounts: [500, 1000, 2000, 5000, 10000],
     bank: {
       bankName: "Bank name (to be confirmed)",
       accountTitle: "Account title (to be confirmed)",
