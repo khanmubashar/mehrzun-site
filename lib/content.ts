@@ -71,3 +71,26 @@ export const contact = {
   title: "Get in Touch",
   body: "Have a question about Mehrzun, interest-free microfinance, partnerships, or supporting our mission? We would be happy to hear from you.",
 };
+
+export const donationForm = {
+  title: "Make a Donation",
+  intro:
+    "Transfer any amount to the account below, then share your details and a screenshot of the transfer so we can confirm your donation.",
+  bankHeading: "Mehrzun bank account",
+  labels: {
+    name: "Full name",
+    phone: "Phone number",
+    email: "Email (optional)",
+    amount: "Donation amount",
+    bankDetails: "Your bank details",
+    bankDetailsHint: "Bank name and account title you sent the donation from",
+    screenshot: "Transfer screenshot",
+    screenshotHint: "Drag an image here, or click to choose one",
+  },
+  submit: "Submit Donation",
+  success: {
+    title: "Thank you for your support",
+    body: "We have received your donation details and will confirm once the transfer is verified.",
+  },
+  error: "Sorry, your details could not be sent. Please try again.",
+};

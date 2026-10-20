@@ -16,6 +16,22 @@ export const siteConfig = {
   ],
   navCta: { href: "#donate", label: "Donate" },
 
+  /**
+   * Donation popup. Shown when a visitor clicks a Donate button.
+   * Fill in the real bank account before deploying; any empty value is hidden.
+   */
+  donation: {
+    currency: "PKR",
+    bank: {
+      bankName: "Bank name (to be confirmed)",
+      accountTitle: "Account title (to be confirmed)",
+      accountNumber: "0000 0000 0000 0000",
+      iban: "PK00 XXXX 0000 0000 0000 0000",
+    },
+    /** Largest screenshot accepted, in MB (Netlify Forms allows up to 8 MB per submission). */
+    maxScreenshotMB: 5,
+  },
+
   social: {
     instagram: { handle: "@mehrzun.foundation", url: "https://instagram.com/mehrzun.foundation" },
   },

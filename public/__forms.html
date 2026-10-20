@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <!--
   Netlify Forms detection file. Netlify scans static HTML at deploy time to register forms.
-  The real form is rendered by React (components/sections/ContactForm.tsx) and posts here.
-  Field names must match the React form. Do not delete.
+  The real forms are rendered by React and post here (see lib/netlify-forms.ts).
+  Field names must match the React forms. Do not delete.
 -->
 <html>
   <body>
+    <!-- components/sections/ContactForm.tsx -->
     <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="text" name="bot-field" />
       <input type="text" name="name" />
@@ -13,6 +14,17 @@
       <input type="text" name="subject" />
       <textarea name="message"></textarea>
       <input type="checkbox" name="consent" />
+    </form>
+
+    <!-- components/donation/DonationForm.tsx -->
+    <form name="donation" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <input type="text" name="amount" />
+      <textarea name="bankDetails"></textarea>
+      <input type="file" name="screenshot" />
     </form>
   </body>
 </html>

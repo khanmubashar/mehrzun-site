@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import logo from "@/assets/img/logo.png";
 import ThemeToggle from "@/components/layout/ThemeToggle";
-import { ButtonLink } from "@/components/ui/Button";
+import DonateButton from "@/components/donation/DonateButton";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -52,9 +52,7 @@ export default function Header() {
             </a>
           ))}
           <ThemeToggle />
-          <ButtonLink href={siteConfig.navCta.href} variant="accent" size="sm">
-            {siteConfig.navCta.label}
-          </ButtonLink>
+          <DonateButton size="sm">{siteConfig.navCta.label}</DonateButton>
         </nav>
 
         <div className="flex items-center gap-1 md:hidden">
@@ -89,13 +87,18 @@ export default function Header() {
               animate="show"
               variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } } }}
             >
-              {[...siteConfig.nav, siteConfig.navCta].map((l) => (
+              {siteConfig.nav.map((l) => (
                 <motion.li key={l.href} variants={{ hidden: { opacity: 0, x: -20 }, show: { opacity: 1, x: 0 } }}>
                   <a href={l.href} onClick={close} className="block border-b border-inverse-foreground/10 py-4 font-serif text-3xl text-inverse-foreground">
                     {l.label}
                   </a>
                 </motion.li>
               ))}
+              <motion.li variants={{ hidden: { opacity: 0, x: -20 }, show: { opacity: 1, x: 0 } }} className="pt-6">
+                <DonateButton onClick={close} className="w-full">
+                  {siteConfig.navCta.label}
+                </DonateButton>
+              </motion.li>
             </motion.ul>
           </motion.nav>
         )}

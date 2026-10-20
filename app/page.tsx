@@ -8,6 +8,7 @@ import Gallery from "@/components/sections/Gallery";
 import Hero from "@/components/sections/Hero";
 import Supporters from "@/components/sections/Supporters";
 import Work from "@/components/sections/Work";
+import DonationProvider from "@/components/donation/DonationProvider";
 
 /**
  * Page order. To add a section: create components/sections/<Name>.tsx, add its copy to lib/content.ts,
@@ -18,7 +19,7 @@ const sections = [Hero, About, Founder, Work, Gallery, Supporters, Donate, Conta
 
 export default function Home() {
   return (
-    <>
+    <DonationProvider>
       <Header />
       <main>
         {sections.map((S) => (
@@ -26,6 +27,6 @@ export default function Home() {
         ))}
       </main>
       <Footer />
-    </>
+    </DonationProvider>
   );
 }

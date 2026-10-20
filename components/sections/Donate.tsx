@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { FadeIn } from "@/components/ui/Motion";
-import { ButtonLink } from "@/components/ui/Button";
+import DonateButton from "@/components/donation/DonateButton";
 import { Container, Eyebrow, Section } from "@/components/ui/Section";
 import { donate } from "@/lib/content";
 import { images } from "@/lib/images";
 
-/** Payment details stay unpublished until validated (see brief); the CTA leads to Contact. */
+/** The CTA opens the donation popup (components/donation). Bank details live in config/site.ts. */
 export default function Donate() {
   return (
     <Section id="donate" tone="inverse-deep" className="isolate overflow-hidden">
@@ -22,9 +22,7 @@ export default function Donate() {
           </FadeIn>
         ))}
         <FadeIn delay={0.35} className="mt-10">
-          <ButtonLink href="#contact" variant="accent">
-            {donate.cta}
-          </ButtonLink>
+          <DonateButton>{donate.cta}</DonateButton>
         </FadeIn>
       </Container>
     </Section>

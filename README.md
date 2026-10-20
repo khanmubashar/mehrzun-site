@@ -41,6 +41,10 @@ Components only use semantic colour names such as `bg-background`, `text-primary
 **Replace stock photos.** Drop new files into `assets/img/` with the same names, or update the imports in `lib/images.ts`.
 Update alt text and credits there too.
 
+**Donation popup.** Every Donate button opens it (`components/donation/`). Set the real bank account in
+`config/site.ts` under `donation.bank`; empty values are hidden. Submissions, including the transfer screenshot,
+go to the Netlify form `donation`. Netlify Forms limits uploads to 8 MB per submission.
+
 **Contact form emails (Netlify Forms).** The form posts to Netlify Forms; `public/__forms.html` lets Netlify detect it.
 In the Netlify dashboard: Forms, Enable form detection, redeploy; then Forms, Form notifications, Add notification,
 Email notification, form `contact`, and the address that should receive messages. Submissions are also listed under Forms.

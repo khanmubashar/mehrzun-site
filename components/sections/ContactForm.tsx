@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { buttonVariants } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
+import { submitNetlifyForm } from "@/lib/netlify-forms";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name"),
@@ -22,27 +23,6 @@ type FormValues = z.infer<typeof schema>;
 /** Netlify Forms form name; must match public/__forms.html. */
 const FORM_NAME = "contact";
 
-/**
- * Submits to Netlify Forms. Netlify registers the form from public/__forms.html at deploy time,
- * stores each submission and emails it to the addresses set under Forms → Form notifications.
- */
-async function submitToNetlify(data: FormValues, botField: string) {
-  const body = new URLSearchParams({
-    "form-name": FORM_NAME,
-    "bot-field": botField,
-    name: data.name,
-    email: data.email,
-    subject: data.subject,
-    message: data.message,
-    consent: data.consent ? "yes" : "no",
-  });
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/__forms.html`, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: body.toString(),
-  });
-  if (!res.ok) throw new Error(`Form submission failed (${res.status})`);
-}
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -58,7 +38,14 @@ export default function ContactForm() {
   const onSubmit = async (data: FormValues) => {
     setSendError(false);
     try {
-      await submitToNetlify(data, botField);
+      await submitNetlifyForm(FORM_NAME, {
+        "bot-field": botField,
+        name: data.name,
+        email: data.email,
+        subject: data.subject,
+        message: data.message,
+        consent: data.consent ? "yes" : "no",
+      });
       setSent(true);
       reset();
     } catch {
