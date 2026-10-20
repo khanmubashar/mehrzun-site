@@ -3,6 +3,11 @@
   command = "npm run build"
   publish = "out"
 
+[functions]
+  # submission-created.ts runs after each verified Netlify Forms submission and sends emails via Gmail
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 [build.environment]
   NODE_VERSION = "20"
   # Served from the domain root on Netlify, so no base path.

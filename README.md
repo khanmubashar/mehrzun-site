@@ -45,6 +45,12 @@ Update alt text and credits there too.
 `config/site.ts` under `donation.bank`; empty values are hidden. Submissions, including the transfer screenshot,
 go to the Netlify form `donation`. Netlify Forms limits uploads to 8 MB per submission.
 
+**Emails after form submissions (Gmail).** `netlify/functions/submission-created.ts` runs after every verified
+Netlify Forms submission. It sends a thank-you to the donor or visitor and the details to the team, through Gmail
+with an app password (about 500 emails a day, free). Wording lives in `netlify/email/templates.ts`.
+Set `GMAIL_USER`, `GMAIL_APP_PASSWORD` and optionally `TEAM_EMAIL` in Netlify's environment variables (see `.env.example`).
+Test locally: `npx tsx scripts/test-emails.ts` (preview HTML) or `--send` (real emails to yourself, needs `.env.local`).
+
 **Contact form emails (Netlify Forms).** The form posts to Netlify Forms; `public/__forms.html` lets Netlify detect it.
 In the Netlify dashboard: Forms, Enable form detection, redeploy; then Forms, Form notifications, Add notification,
 Email notification, form `contact`, and the address that should receive messages. Submissions are also listed under Forms.

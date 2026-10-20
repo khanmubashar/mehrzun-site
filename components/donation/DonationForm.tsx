@@ -140,7 +140,7 @@ export default function DonationForm({ onDone }: { onDone: () => void }) {
         name: data.name,
         phone: data.phone,
         email: data.email || "",
-        amount: `${currency} ${data.amount}`,
+        amount: `${currency} ${Number(data.amount).toLocaleString("en-PK")}`,
         bankDetails: data.bankDetails,
         screenshot: data.screenshot,
       });
