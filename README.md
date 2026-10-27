@@ -20,7 +20,7 @@ npm run build      # static site is written to ./out
 | `lib/images.ts` | Image imports, alt text and photo credits (generated). |
 | `assets/img/` | Logo and photos (imported, so they are optimised and base-path safe). |
 | `app/globals.css` | Theme tokens for light and dark, Tailwind setup. |
-| `components/sections/` | One file per page section (Hero, About, Founder, Work, Gallery, Supporters, Donate, Contact). |
+| `components/sections/` | One file per page section (Hero, About, Founder, Work, Gallery, Campaigns, Supporters, Donate, Contact). |
 | `components/layout/` | Header, Footer, ThemeProvider, ThemeToggle. |
 | `components/ui/` | Reusable building blocks: Button variants, Section/Container/Eyebrow/Heading, Motion helpers. |
 | `scripts/images/` | Playwright scripts used to search and download the Pexels photos. |
