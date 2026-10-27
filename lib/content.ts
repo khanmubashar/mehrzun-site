@@ -50,6 +50,12 @@ export const work = {
   quote: brandAltTagline,
 };
 
+export const campaigns = {
+  /** Read by screen readers only; the posters carry their own headlines. */
+  title: "Ways to give",
+  cta: "Donate",
+};
+
 export const supporters = {
   eyebrow: "Our Supporters",
   title: "With gratitude",

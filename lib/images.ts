@@ -12,9 +12,14 @@ import g5 from "@/assets/img/g5.jpg";
 import g6 from "@/assets/img/g6.jpg";
 import g7 from "@/assets/img/g7.jpg";
 import g8 from "@/assets/img/g8.jpg";
+import c1 from "@/assets/img/campaign/c1.jpg";
+import c2 from "@/assets/img/campaign/c2.jpg";
+import c3 from "@/assets/img/campaign/c3.jpg";
+import c4 from "@/assets/img/campaign/c4.jpg";
+import c5 from "@/assets/img/campaign/c5.jpg";
 
 type Img = { src: StaticImageData; alt: string; caption: string };
-export const images: { hero: Img; about: Img; work: Img; donate: Img; gallery: Img[] } = {
+export const images: { hero: Img; about: Img; work: Img; donate: Img; gallery: Img[]; campaigns: Img[] } = {
   hero: { src: hero, alt: "A grain seller at his stall in a busy Karachi market", caption: "Grain market, Karachi" },
   about: { src: about, alt: "An elderly craftsman carving wood in a Peshawar market", caption: "Woodcarver, Peshawar" },
   work: { src: work, alt: "A farmer tending his crop field in Swat Valley, Khyber Pakhtunkhwa", caption: "Farmland, Swat Valley" },
@@ -28,6 +33,15 @@ export const images: { hero: Img; about: Img; work: Img; donate: Img; gallery: I
     { src: g6, alt: "A young reed vendor in a Faisalabad market", caption: "Reed seller, Faisalabad" },
     { src: g7, alt: "A woman in traditional Hunza headwear at a craft market", caption: "Hunza crafts stall" },
     { src: g8, alt: "A street vendor selling halwa in Mingora", caption: "Halwa seller, Mingora" },
+  ],
+  /* Campaign posters for the carousel (components/sections/Campaigns.tsx), in display order: the first
+     starts in the centre, the last sits to its left. Alt text carries each poster's message. */
+  campaigns: [
+    { src: c1, alt: "Interest-free microfinance. No interest. Just opportunity. Your donation becomes an interest-free loan that helps a small business owner in Pakistan stand on their own feet, with dignity.", caption: "Grain market, Karachi" },
+    { src: c4, alt: "Women in business. Back her craft. Many women artisans already have the skill; what they need is a fair start, without debt that grows every month. Rs 15,000 funds one woman's business.", caption: "Hunza crafts stall" },
+    { src: c2, alt: "Sponsor a stall. Rs 25,000 restocks a fruit stall: an interest-free loan, repaid at their pace and lent again to the next family. 1 vendor Rs 25,000, 5 vendors Rs 125,000, 10 vendors Rs 250,000.", caption: "Fruit seller" },
+    { src: c3, alt: "How it works, at a naan bakery in Mingora. One donation, many livelihoods: you give, we lend interest-free, and repayments are lent again to the next family.", caption: "Naan bakery, Mingora" },
+    { src: c5, alt: "Choose your impact. Small help, lasting change: Rs 5,000 buys tools for a craftsman's trade, Rs 15,000 fresh stock for a small shop, Rs 50,000 a full stall from the ground up.", caption: "Craftsman" },
   ],
 };
 

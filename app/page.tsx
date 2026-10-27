@@ -1,6 +1,7 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import About from "@/components/sections/About";
+import Campaigns from "@/components/sections/Campaigns";
 import Contact from "@/components/sections/Contact";
 import Donate from "@/components/sections/Donate";
 import Founder from "@/components/sections/Founder";
@@ -15,7 +16,7 @@ import DonationProvider from "@/components/donation/DonationProvider";
  * add it here, and (if it should be in the menu) add its #id to siteConfig.nav.
  * Community Service is planned for later (see brief) and slots in the same way.
  */
-const sections = [Hero, About, Founder, Work, Gallery, Supporters, Donate, Contact];
+const sections = [Hero, About, Founder, Work, Gallery, Campaigns, Supporters, Donate, Contact];
 
 export default function Home() {
   return (

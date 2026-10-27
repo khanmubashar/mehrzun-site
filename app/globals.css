@@ -33,6 +33,9 @@
   --inverse-muted: #d9d2bf;
   --inverse-accent: #dcc28e;
 
+  --showcase: #5c5c5c;            /* neutral grey band behind the campaign posters */
+  --showcase-foreground: #fdfaf3;
+
   --danger: #b42318;
   color-scheme: light;
 }
@@ -60,6 +63,9 @@
   --inverse-muted: #c8c0aa;
   --inverse-accent: #dcc28e;
 
+  --showcase: #1f2421;
+  --showcase-foreground: #f7f1e3;
+
   --danger: #f97066;
   color-scheme: dark;
 }
@@ -78,6 +84,8 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-text: var(--accent-text);
+  --color-showcase: var(--showcase);
+  --color-showcase-foreground: var(--showcase-foreground);
   --color-inverse: var(--inverse);
   --color-inverse-deep: var(--inverse-deep);
   --color-inverse-foreground: var(--inverse-foreground);
@@ -101,3 +109,67 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ------------------------------------------------------------------ Campaign carousel (Splide) */
+/* Splide's core CSS handles layout only; the look is drawn here. Neighbouring posters sit at 82%
+   so the centre one reads as the focus, as in the design. */
+.mz-campaigns .splide__slide {
+  display: flex;
+  align-items: center;
+}
+.mz-campaigns__card {
+  width: 100%;
+  transform: scale(0.82);
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.7s ease;
+  opacity: 0.9;
+}
+.mz-campaigns .splide__slide.is-active .mz-campaigns__card {
+  transform: scale(1);
+  opacity: 1;
+}
+.mz-campaigns .splide__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: var(--accent-foreground);
+  transform: translateY(-50%);
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgb(0 0 0 / 0.25);
+  transition: background 0.3s ease;
+}
+.mz-campaigns .splide__arrow:hover { background: var(--accent-hover); }
+.mz-campaigns .splide__arrow:focus-visible { outline: 2px solid var(--showcase-foreground); outline-offset: 3px; }
+.mz-campaigns .splide__arrow svg { width: 1.1rem; height: 1.1rem; fill: currentColor; }
+.mz-campaigns .splide__arrow--prev { left: 1.25rem; }
+.mz-campaigns .splide__arrow--prev svg { transform: scaleX(-1); }
+.mz-campaigns .splide__arrow--next { right: 1.25rem; }
+.mz-campaigns .splide__pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0;
+}
+.mz-campaigns .splide__pagination__page {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.4);
+  cursor: pointer;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.mz-campaigns .splide__pagination__page.is-active { width: 1.75rem; background: var(--accent); }
+.mz-campaigns .splide__pagination__page:focus-visible { outline: 2px solid var(--showcase-foreground); outline-offset: 3px; }
+@media (max-width: 767px) {
+  .mz-campaigns__card { transform: scale(0.9); }
+  .mz-campaigns .splide__arrow { width: 2.5rem; height: 2.5rem; }
+  .mz-campaigns .splide__arrow--prev { left: 0.5rem; }
+  .mz-campaigns .splide__arrow--next { right: 0.5rem; }
+}
+
