@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight, ChevronDown, Heart } from "lucide-react";
 import { useRef } from "react";
-import logo from "@/assets/img/logo.png";
+import logo from "@/assets/img/logo.webp";
 import { images } from "@/lib/images";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Section";

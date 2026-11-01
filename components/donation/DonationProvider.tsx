@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { createContext, useCallback, useContext, useState } from "react";
-import logo from "@/assets/img/logo.png";
+import logo from "@/assets/img/logo.webp";
 import DonationForm from "@/components/donation/DonationForm";
 import { donationForm } from "@/lib/content";
 

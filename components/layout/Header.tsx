@@ -4,7 +4,7 @@ import Image from "next/image";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import logo from "@/assets/img/logo.png";
+import logo from "@/assets/img/logo.webp";
 import ThemeToggle from "@/components/layout/ThemeToggle";
 import DonateButton from "@/components/donation/DonateButton";
 import { siteConfig } from "@/config/site";

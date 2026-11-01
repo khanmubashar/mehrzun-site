@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FaInstagram as Instagram } from "react-icons/fa6";
-import logo from "@/assets/img/logo.png";
+import logo from "@/assets/img/logo.webp";
 import { siteConfig } from "@/config/site";
 import { brand } from "@/lib/content";
 

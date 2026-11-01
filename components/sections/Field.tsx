@@ -34,6 +34,7 @@ export default function Field() {
       <FadeIn delay={0.1} className="mt-14">
         <Splide
           aria-label={field.title}
+          onMounted={(splide: { root: HTMLElement }) => playClones(splide.root, !reduce)}
           options={{
             type: "loop",
             autoWidth: true,
@@ -73,9 +74,18 @@ export default function Field() {
   );
 }
 
+/** Splide copies the edge slides to loop; those copies are plain DOM, so start their videos here too. */
+function playClones(root: HTMLElement, autoplay: boolean) {
+  root.querySelectorAll<HTMLVideoElement>(".splide__slide--clone video").forEach((v) => {
+    v.muted = true;
+    if (autoplay) v.play().catch(() => {});
+  });
+}
+
 /**
  * Silent looping clip. React does not write the `muted` attribute into the HTML, and browsers only autoplay
  * muted video, so mute and start it from code. With reduced motion it stays paused and shows controls.
+ * Plays the smaller WebM copy (same name, .webm) where supported and falls back to the MP4.
  */
 function FieldVideo({ src, poster, label, autoplay }: { src: string; poster: string; label: string; autoplay: boolean }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -89,7 +99,6 @@ function FieldVideo({ src, poster, label, autoplay }: { src: string; poster: str
   return (
     <video
       ref={ref}
-      src={src}
       poster={poster}
       aria-label={label}
       controls={!autoplay}
@@ -98,6 +107,9 @@ function FieldVideo({ src, poster, label, autoplay }: { src: string; poster: str
       playsInline
       preload="metadata"
       className="absolute inset-0 size-full object-cover"
-    />
+    >
+      <source src={src.replace(/\.mp4$/, ".webm")} type="video/webm" />
+      <source src={src} type="video/mp4" />
+    </video>
   );
 }

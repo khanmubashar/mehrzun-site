@@ -38,7 +38,7 @@ Components only use semantic colour names such as `bg-background`, `text-primary
 
 **Change colours.** Edit the CSS variables under `:root` (light) and `[data-theme="dark"]` in `app/globals.css`.
 
-**Replace stock photos.** Drop new files into `assets/img/` with the same names, or update the imports in `lib/images.ts`.
+**Replace stock photos.** Drop new files into `assets/img/` and update the imports in `lib/images.ts`, then run `python3 scripts/images/optimize.py` to convert them to WebP and shrink them (it replaces the originals).
 Update alt text and credits there too.
 
 **Donation popup.** Every Donate button opens it (`components/donation/`). Set the real bank account in
