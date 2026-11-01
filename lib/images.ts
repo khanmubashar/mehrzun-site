@@ -4,6 +4,7 @@ import hero from "@/assets/img/hero.jpg";
 import about from "@/assets/img/about.jpg";
 import work from "@/assets/img/work.jpg";
 import donate from "@/assets/img/donate.jpg";
+import founder from "@/assets/img/founder.jpg";
 import g1 from "@/assets/img/g1.jpg";
 import g2 from "@/assets/img/g2.jpg";
 import g3 from "@/assets/img/g3.jpg";
@@ -17,13 +18,25 @@ import c2 from "@/assets/img/campaign/c2.jpg";
 import c3 from "@/assets/img/campaign/c3.jpg";
 import c4 from "@/assets/img/campaign/c4.jpg";
 import c5 from "@/assets/img/campaign/c5.jpg";
+import f1 from "@/assets/img/field/f1.jpg";
+import f2 from "@/assets/img/field/f2.jpg";
+import f3 from "@/assets/img/field/f3.jpg";
+import f4 from "@/assets/img/field/f4.jpg";
+import f5 from "@/assets/img/field/f5.jpg";
+import f6 from "@/assets/img/field/f6.jpg";
+import f7 from "@/assets/img/field/f7.jpg";
+import f8 from "@/assets/img/field/f8.jpg";
+import foodBagsPoster from "@/assets/img/field/food-bags-poster.jpg";
 
 type Img = { src: StaticImageData; alt: string; caption: string };
-export const images: { hero: Img; about: Img; work: Img; donate: Img; gallery: Img[]; campaigns: Img[] } = {
+/** A slider item may be a short silent clip: `video` is a path under public/, `src` is its poster frame. */
+type FieldItem = Img & { video?: string };
+export const images: { hero: Img; about: Img; work: Img; donate: Img; founder: Img; gallery: Img[]; campaigns: Img[]; field: FieldItem[] } = {
   hero: { src: hero, alt: "A grain seller at his stall in a busy Karachi market", caption: "Grain market, Karachi" },
   about: { src: about, alt: "An elderly craftsman carving wood in a Peshawar market", caption: "Woodcarver, Peshawar" },
   work: { src: work, alt: "A farmer tending his crop field in Swat Valley, Khyber Pakhtunkhwa", caption: "Farmland, Swat Valley" },
   donate: { src: donate, alt: "Men sorting fresh peaches in an orchard in Gwalerai, Khyber Pakhtunkhwa", caption: "Peach harvest, Gwalerai" },
+  founder: { src: founder, alt: "Portrait of the founder of Mehrzun", caption: "Founder, Mehrzun" },
   gallery: [
     { src: g1, alt: "A shopkeeper in Mingora's historic bazaar", caption: "Shopkeeper, Mingora" },
     { src: g2, alt: "A fruit vendor with his scale at Mandaguchha market", caption: "Fruit seller, Mandaguchha" },
@@ -42,6 +55,18 @@ export const images: { hero: Img; about: Img; work: Img; donate: Img; gallery: I
     { src: c2, alt: "Sponsor a stall. Rs 25,000 restocks a fruit stall: an interest-free loan, repaid at their pace and lent again to the next family. 1 vendor Rs 25,000, 5 vendors Rs 125,000, 10 vendors Rs 250,000.", caption: "Fruit seller" },
     { src: c3, alt: "How it works, at a naan bakery in Mingora. One donation, many livelihoods: you give, we lend interest-free, and repayments are lent again to the next family.", caption: "Naan bakery, Mingora" },
     { src: c5, alt: "Choose your impact. Small help, lasting change: Rs 5,000 buys tools for a craftsman's trade, Rs 15,000 fresh stock for a small shop, Rs 50,000 a full stall from the ground up.", caption: "Craftsman" },
+  ],
+  /* Mehrzun's own photos for the "From the Field" slider (components/sections/Field.tsx), in display order. Wide and tall shots both show in full, never cropped. */
+  field: [
+    { src: f1, alt: "Balloon arch and mosque-silhouette backdrop reading \u201cfundraiser by DriveforDeen\u201d", caption: "Fundraiser evening" },
+    { src: f2, alt: "Guests gathered on a lawn at night for the fundraiser", caption: "Guests at the fundraiser" },
+    { src: f3, alt: "Stacked boxes of Ramadan ration packs and white sacks ready for delivery", caption: "Ration packs, ready to go" },
+    { src: foodBagsPoster, video: "/video/food-bags.mp4", alt: "A car boot packed full of food bags ready for delivery", caption: "Food bags on the way" },
+    { src: f4, alt: "A volunteer laying out plates of biryani on the ground for distribution", caption: "Serving meals" },
+    { src: f5, alt: "A woman trying out a sewing machine at home", caption: "A sewing machine for her trade" },
+    { src: f6, alt: "A woman and a young man seated beside her new sewing machine", caption: "With her new machine" },
+    { src: f7, alt: "Four children at home during a family visit", caption: "Family visit" },
+    { src: f8, alt: "Four children standing together in their home", caption: "Meeting the family" },
   ],
 };
 

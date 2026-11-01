@@ -56,10 +56,17 @@ export const campaigns = {
   cta: "Donate",
 };
 
+export const field = {
+  eyebrow: "From the Field",
+  title: "Moments from our work",
+  body: "Fundraising together, packing rations, sharing meals and visiting the families we support.",
+};
+
 export const supporters = {
   eyebrow: "Our Supporters",
   title: "With gratitude",
-  body: "We are grateful to everyone who supports our mission. A donor recognition section will be added as permissions and details are confirmed.",
+  body: "We are grateful to the people whose support makes Mehrzun’s work possible.",
+  names: ["Muhammad Zain Maqsood", "Nadeem Zia Pirzada", "Mian Salman Asghar", "Attique Sheikh"],
 };
 
 export const donate = {

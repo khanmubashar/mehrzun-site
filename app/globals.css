@@ -173,3 +173,64 @@
   .mz-campaigns .splide__arrow--next { right: 0.5rem; }
 }
 
+
+/* ------------------------------------------------------------------ Field photo slider (Splide) */
+/* Each photo's box takes its own shape (--ratio = width / height, set in Field.tsx): full slider height,
+   unless that would be wider than 85% of the screen, then narrower and shorter. The box always matches
+   the photo, so nothing is cropped. Slides away from the centre are dimmed slightly. */
+.mz-field { --mz-field-h: 26rem; }
+.mz-field .splide__slide { display: flex; align-items: center; }
+.mz-field__photo {
+  width: min(calc(var(--mz-field-h) * var(--ratio)), 85vw);
+}
+.mz-field__card {
+  opacity: 0.7;
+  transition: opacity 0.7s ease;
+}
+.mz-field .splide__slide.is-active .mz-field__card { opacity: 1; }
+.mz-field .splide__arrow {
+  position: absolute;
+  top: calc(var(--mz-field-h) / 2 - 1.5rem);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: var(--accent-foreground);
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgb(0 0 0 / 0.2);
+  transition: background 0.3s ease;
+}
+.mz-field .splide__arrow:hover { background: var(--accent-hover); }
+.mz-field .splide__arrow:focus-visible { outline: 2px solid var(--foreground); outline-offset: 3px; }
+.mz-field .splide__arrow svg { width: 1.1rem; height: 1.1rem; fill: currentColor; }
+.mz-field .splide__arrow--prev { left: 1.25rem; }
+.mz-field .splide__arrow--prev svg { transform: scaleX(-1); }
+.mz-field .splide__arrow--next { right: 1.25rem; }
+.mz-field .splide__pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0;
+}
+.mz-field .splide__pagination__page {
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 0;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--foreground) 22%, transparent);
+  cursor: pointer;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.mz-field .splide__pagination__page.is-active { width: 1.75rem; background: var(--accent); }
+.mz-field .splide__pagination__page:focus-visible { outline: 2px solid var(--foreground); outline-offset: 3px; }
+@media (max-width: 767px) {
+  .mz-field { --mz-field-h: 22rem; }
+  .mz-field .splide__arrow { top: calc(var(--mz-field-h) / 2 - 1.25rem); width: 2.5rem; height: 2.5rem; }
+  .mz-field .splide__arrow--prev { left: 0.5rem; }
+  .mz-field .splide__arrow--next { right: 0.5rem; }
+}

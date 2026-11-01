@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { Quote } from "lucide-react";
-import logo from "@/assets/img/logo.png";
 import { FadeIn } from "@/components/ui/Motion";
 import { Container, Eyebrow, Section } from "@/components/ui/Section";
 import { founder } from "@/lib/content";
+import { images } from "@/lib/images";
 
-/** Founder photo is pending (see brief), so the emblem stands in for now. */
+/** Founder's message with a small round portrait beside the signature. The source photo is small (184px), so keep it at this size. */
 export default function Founder() {
   return (
     <Section id="founder" tone="inverse" className="overflow-hidden">
@@ -23,7 +23,7 @@ export default function Founder() {
           ))}
         </blockquote>
         <FadeIn delay={0.3} className="mt-10 flex items-center justify-center gap-4">
-          <Image src={logo} alt="" width={56} height={56} className="rounded-full" />
+          <Image src={images.founder.src} alt={images.founder.alt} width={80} height={80} placeholder="blur" className="size-20 rounded-full object-cover ring-2 ring-accent ring-offset-4 ring-offset-inverse" />
           <p className="text-left">
             <span className="block h-px w-10 bg-accent" />
             <span className="mt-2 block text-sm font-semibold tracking-[0.18em] text-inverse-accent uppercase">{founder.signature}</span>
