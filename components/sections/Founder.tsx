@@ -5,7 +5,7 @@ import { Container, Eyebrow, Section } from "@/components/ui/Section";
 import { founder } from "@/lib/content";
 import { images } from "@/lib/images";
 
-/** Founder's message with a small round portrait beside the signature. The source photo is small (184px), so keep it at this size. */
+/** Founder's message with a round portrait beside the signature. Source is 512px square (assets/img/founder.webp). */
 export default function Founder() {
   return (
     <Section id="founder" tone="inverse" className="overflow-hidden">
@@ -22,8 +22,8 @@ export default function Founder() {
             </FadeIn>
           ))}
         </blockquote>
-        <FadeIn delay={0.3} className="mt-10 flex items-center justify-center gap-4">
-          <Image src={images.founder.src} alt={images.founder.alt} width={80} height={80} placeholder="blur" className="size-20 rounded-full object-cover ring-2 ring-accent ring-offset-4 ring-offset-inverse" />
+        <FadeIn delay={0.3} className="mt-10 flex items-center justify-center gap-5">
+          <Image src={images.founder.src} alt={images.founder.alt} width={128} height={128} placeholder="blur" className="size-28 rounded-full sm:size-32 object-cover ring-2 ring-accent ring-offset-4 ring-offset-inverse" />
           <p className="text-left">
             <span className="block h-px w-10 bg-accent" />
             <span className="mt-2 block text-sm font-semibold tracking-[0.18em] text-inverse-accent uppercase">{founder.signature}</span>
